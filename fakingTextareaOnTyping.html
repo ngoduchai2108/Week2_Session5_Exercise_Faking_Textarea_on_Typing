@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faking Textarea On Typing</title>
+</head>
+<body>
+<form>
+    <table style="text-align: center">
+        <tr>
+            <td><h1>Faking Textarea on Typing</h1></td>
+        </tr>
+        <tr>
+            <td> <textarea rows="5" cols="40" id="comment" onkeydown="typeTextarea();"> </textarea> </td>
+        </tr>
+    </table>
+</form>
+<script>
+    var array=prompt('Enter a string:');
+    function typeTextarea() {
+        let text=document.getElementById('comment')
+        let count=text.value.length;
+        let data='';
+        if (count>0){
+            for (let i=0;i<count;i++){
+                data+=array[i];
+            }
+            if (count===array.length+1){
+                text.value='';
+                data='';
+            }
+        }
+        text.value=data;
+        setTimeout("typeTextarea()",2);
+    }
+</script>
+</body>
+</html>
